@@ -6,5 +6,5 @@ DQDApp
 4.数据详情框架
 
 ##GIF动画演示
-![Flipboard playing multiple GIFs](https://github.com/zmXie/DQDApp/raw/master/DQDAppTests/DQDApp.gif)
+![Flipboard playing multiple GIFs](https://github.com/zmXie/DQDApp/raw/master/DQDAppUITests/DQDApp.gif)
 
