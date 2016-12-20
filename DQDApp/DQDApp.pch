@@ -1,0 +1,15 @@
+//
+//  DQDApp.pch
+//  DQDApp
+//
+//  Created by xzm on 16/10/14.
+//  Copyright © 2016年 ypwl. All rights reserved.
+//
+
+#ifndef DQDApp_pch
+#define DQDApp_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* DQDApp_pch */
