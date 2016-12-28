@@ -57,7 +57,7 @@ const void *DateFinishBlock = &DateFinishBlock;
         
         objc_setAssociatedObject(self, DatePickerControl, datePickControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
-        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWith, autoScaleH(200)+50)];
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWith, 200+50)];
         bgView.backgroundColor = [UIColor whiteColor];
         bgView.tag = 200;
         [datePickControl addSubview:bgView];
@@ -71,12 +71,12 @@ const void *DateFinishBlock = &DateFinishBlock;
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:@"确定" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor main_BlueColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         button.frame = CGRectMake(kScreenWith-20-50, 0, 50, 40);
         [button addTarget: self action:@selector(datePickAction) forControlEvents:UIControlEventTouchUpInside];
         [bgView addSubview:button];
         
-        UIDatePicker *datePick = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 50, kScreenWith, autoScaleH(200))];
+        UIDatePicker *datePick = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 50, kScreenWith, 200)];
         datePick.tag = 300;
         datePick.datePickerMode = UIDatePickerModeDate;
         [bgView addSubview:datePick];

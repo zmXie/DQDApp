@@ -10,24 +10,11 @@
 
 @interface UIColor (Custom)
 
-+(UIColor *)main_BlueColor;
-
-+ (UIColor *)main_GrayColor;
-
-+ (UIColor *)main_redColor;
-
-+ (UIColor *)main_yellowColor;
-
-+ (UIColor *)main_greenColor;
-
-+ (UIColor *)main_orangeColor;
-
+/**分割线颜色*/
 + (UIColor *)separatorColor;
-
-+ (UIColor *)main_LightGrayColor;
-
-+ (UIColor *)main_DarkGrayColor;
-
-+ (UIColor *)cellText_GrayColor;
+/**导航栏颜色*/
++ (UIColor *)NavigationColor;
+/**底色灰（参照个人中心）*/
++ (UIColor *)backgroundGrayColor;
 
 @end

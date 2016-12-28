@@ -10,59 +10,19 @@
 
 @implementation UIColor (Custom)
 
-+(UIColor *)main_BlueColor{
-    
-    return ColorWithRGB(52,135,234);
-}
-
-+ (UIColor *)main_GrayColor{
-    
-    return ColorWithRGB(240, 240, 240);
-}
-
-+ (UIColor *)cellText_GrayColor{
-    
-    return ColorWithRGB(180, 180, 180);
-}
-
-+ (UIColor *)main_redColor{
-    
-    return ColorWithRGB(230, 0, 18);
-}
-
-+ (UIColor *)main_yellowColor{
-    
-    return ColorWithRGB(247, 177, 46);
-}
-
-+ (UIColor *)main_greenColor{
-    
-    return ColorWithRGB(42, 204, 140);
-}
-
-+ (UIColor *)main_orangeColor{
-    
-    return ColorWithRGB(246, 78, 41);
-}
-
-
 + (UIColor *)separatorColor{
     
     return ColorWithRGB(230, 230, 230);
 }
 
-+ (UIColor *)main_LightGrayColor{
++ (UIColor *)NavigationColor{
     
-     return ColorWithRGB(139, 139, 139);
+    return ColorWithRGB(38, 170, 66);
 }
 
-+ (UIColor *)main_DarkGrayColor{
++ (UIColor *)backgroundGrayColor{
     
-    return ColorWithRGB(60, 60, 60);
+    return ColorWithRGB(246, 247, 246);
 }
-
-
-
-
 
 @end

@@ -9,7 +9,45 @@
 #ifndef DQDApp_pch
 #define DQDApp_pch
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#pragma 适配相关
+//屏幕适配
+#define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
+#define IS_IPHONE4S (([[UIScreen mainScreen] bounds].size.height-480)?NO:YES)
+#define IS_IPHONE6P ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242,2208), [[UIScreen mainScreen] currentMode].size) : NO)
+#define IS_IPHONE6 (([[UIScreen mainScreen] bounds].size.height-667)?NO:YES)
+#define IS_IPHONE_6P (([[UIScreen mainScreen] bounds].size.height-736)?NO:YES)
+#define i5Height(x) x/568.0*kScreenHeight
+
+
+//颜色rgb
+#define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
+#define ColorWithRGBA(r,g,b,a) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:a]
+#define CIColorWithRGBA(r,g,b,a) [CIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:a]
+
+//屏幕宽高
+#define kScreenWith [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+//弱引用
+#define WeakSelf __weak typeof(self) weakSelf = self;
+//Document路径
+#define kDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+
+
+#pragma 公用文件
+#import "UIViewExt.h"
+#import "YPContentViewController.h"
+#import "SVProgressHUD.h"
+#import "BaseModel.h"
+#import "MJRefresh.h"
+#import "UIImageView+AFNetworking.h"
+#import "DataService.h"
+#import "AppTools.h"
+#import "API.h"
+#import "UIColor+Custom.h"
+#import "UserInfo.h"
+#import "AppDelegate.h"
+#import "UIView+addLine.h"
+#import "UIView+UIViewController.h"
 
 #endif /* DQDApp_pch */

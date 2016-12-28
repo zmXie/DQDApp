@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class HomeViewController;
-
 @interface TabBarViewController : UITabBarController
-
-@property (nonatomic,strong)HomeViewController *homeVC;
 
 @end

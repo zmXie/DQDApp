@@ -24,11 +24,11 @@ const void *VCTitleLab = &VCTitleLab;
     if (bar == nil) {
         
         bar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWith, 64)];
-        bar.backgroundColor = [UIColor whiteColor];
-        bar.alpha = 0;
+        bar.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
         [self.view addSubview:bar];
-        self.bar = bar;
+        
     }
+    
     
     if (titleLab == nil) {
         
@@ -36,23 +36,27 @@ const void *VCTitleLab = &VCTitleLab;
         titleLab.font = [UIFont systemFontOfSize:18];
         titleLab.textColor = [UIColor whiteColor];
         titleLab.textAlignment = NSTextAlignmentCenter;
-        [self.view addSubview:titleLab];
-        self.titleLab = titleLab;
+        [bar addSubview:titleLab];
+        
     }
 
     if (backBtn == nil) {
         
-        backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 45, 44)];
-        
+        UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 20, 70, 44)];
         [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-        
-        [backBtn setImage:[UIImage imageNamed:@"btn_008-1"] forState:UIControlStateNormal];
-        
-        [self.view addSubview:backBtn];
-        self.backBtn = backBtn;
+        [backBtn setImage:[UIImage imageNamed:@"btn_back_normal"] forState:UIControlStateNormal];
+        [backBtn setImage:[UIImage imageNamed:@"btn_back_pressed"] forState:UIControlStateSelected];
+        [backBtn setTitle:@"返回" forState:0];
+        [backBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 15)];
+        [backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 5)];
+        backBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [bar addSubview:backBtn];
 
     }
-
+    
+    self.bar = bar;
+    self.titleLab = titleLab;
+    self.backBtn = backBtn;
     
 }
 

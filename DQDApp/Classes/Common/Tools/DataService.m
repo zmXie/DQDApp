@@ -11,10 +11,7 @@
 
 #define TIMEOUT 10
 
-
 @implementation DataService
-
-
 
 + (void)requestWithUrlString:(NSString *)urlString
                       params:(NSDictionary *)params
@@ -76,7 +73,6 @@
     
     
 }
-
 
 + (void)postImagesWithUrlString:(NSString *)url params:(NSDictionary *)params
                         images :(NSArray *)imgs
@@ -143,87 +139,6 @@
         }];
     });
     
-}
-
-#pragma mark -- 上传头像
-+(void)upLoadHeaderViewRequestWithImage:(UIImage *)theimage success:(SuccessLoadHandle)successBlock fail:(FailLoadHandle)failBlock{
-    
-    if ([[UIDevice currentDevice].systemVersion doubleValue] >= 8) {
-        
-        AFHTTPSessionManager*manager=[AFHTTPSessionManager  manager];
-//        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-//        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
-        manager.securityPolicy.allowInvalidCertificates = YES;
-        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
-
-        
-        [manager POST:[NSString stringWithFormat:@"%@/index.php?m=api&c=user&a=saveAvater&token=%@",URLHEAD,[UserInfo sharedUserInfo].token] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-            
-            
-            NSData *imgData = UIImageJPEGRepresentation(theimage, 0.01);
-            [formData appendPartWithFileData:imgData name:@"file" fileName:@"1.png" mimeType:@"image/png"];
-            
-            
-            
-        } success:^(NSURLSessionDataTask *task, id responseObject) {
-            
-            if ([responseObject[@"status"] integerValue] != 0) {
-                [SVProgressHUD showSuccessWithStatus:@"上传成功"];
-                
-            }
-            
-            successBlock(responseObject);
-            
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            
-            failBlock(error);
-            
-        }];
-        
-    }else{
-        
-        NSString *tmpFileName = [NSString stringWithFormat:@"%f",[NSDate timeIntervalSinceReferenceDate]];
-        
-        NSURL *tmpFileUrl = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:tmpFileName]];
-        
-        NSMutableURLRequest *mutableRequest = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@/index.php?m=content&c=user&a=saveAvatar&token=%@",URLHEAD,[UserInfo sharedUserInfo].token] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-            
-            NSData *imgData = UIImageJPEGRepresentation(theimage, 0.01);
-            [formData appendPartWithFileData:imgData name:@"file" fileName:@"1.png" mimeType:@"image/png"];
-            
-            
-        } error:nil];
-        
-        [[AFHTTPRequestSerializer serializer]requestWithMultipartFormRequest:mutableRequest writingStreamContentsToFile:tmpFileUrl completionHandler:^(NSError *error) {
-            
-            AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-            
-            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-            
-            manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
-            
-            manager.securityPolicy.allowInvalidCertificates = YES;
-            
-            NSURLSessionUploadTask *upLoadTask = [manager uploadTaskWithRequest:mutableRequest fromFile:tmpFileUrl progress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-                
-                if (error) {
-                    
-                    failBlock(error);
-                    
-                }else{
-                    
-                    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-                    
-                    successBlock(dic);
-                    
-                }
-            }];
-            
-            [upLoadTask resume];
-        }];
-        
-    }
 }
 
 

@@ -12,10 +12,10 @@
 
 - (void)addCustomNavigationBar;
 
-@property (nonatomic,strong)UIView *bar;
+@property (nonatomic,weak)UIView *bar;
 
-@property (nonatomic,strong)UIButton *backBtn;
+@property (nonatomic,weak)UIButton *backBtn;
 
-@property (nonatomic,strong)UILabel *titleLab;
+@property (nonatomic,weak)UILabel *titleLab;
 
 @end

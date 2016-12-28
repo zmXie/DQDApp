@@ -27,5 +27,4 @@ typedef void(^FailLoadHandle) (NSError *error);
                    successBlock:(SuccessLoadHandle)successBlock
                       failBlock:(FailLoadHandle)failureBlock;
 
-+(void)upLoadHeaderViewRequestWithImage:(UIImage *)theimage success:(SuccessLoadHandle)successBlock fail:(FailLoadHandle)failBlock;
 @end
